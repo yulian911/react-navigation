@@ -10,76 +10,36 @@ import classNames from 'classnames';
 
 const App = () => {
   const [toggle,setToggle]=useState(false)
+  const [active,setActive] = useState(null)
   console.log(toggle)
+
+  const nav =[
+    {title:'Brand Name',component:<AiFillApple/>},
+    {title:'Dashboard',component:<AiFillHome/>},
+    {title:'Customers',component:<AiOutlineUser/>},
+    {title:'Messages',component:<BsFillChatDotsFill/>},
+    {title:'Help',component:<IoHelpBuoySharp/>},
+    {title:'Settings',component:<AiFillSetting/>},
+    {title:'Passwords',component:<AiFillLock/>},
+    {title:'Sign Out',component:<FaSignOutAlt/>},
+  ]
+
   return (
     <div className="App">
       <div className={classNames([`navigation`,toggle ?'active':''])}>
         <ul>
-          <li>
+          {nav.map((el,i)=>(
+          <li key={i} onClick={()=>setActive(i)} className={active===i ? 'active' : ''}>
             <Link to="/">
               <span className='icon'>
                
-                <AiFillApple/>
+                {el.component}
               </span>
-              <span className='title'>Brand Name</span>
+              <span className='title'>{el.title}</span>
             </Link>
           </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-                <AiFillHome/>
-              </span>
-              <span className='title'>Dashboard</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-              <AiOutlineUser/>
-              </span>
-              <span className='title'>Customers</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-                <BsFillChatDotsFill/>
-              </span>
-              <span className='title'>Messages</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-                  <IoHelpBuoySharp/>
-              </span>
-              <span className='title'>Help</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-                  <AiFillSetting/>
-              </span>
-              <span className='title'>Settings</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-                <AiFillLock/>
-              </span>
-              <span className='title'>Passwords</span>
-            </Link>
-          </li>
-          <li>
-            <Link to="/">
-              <span className='icon'>
-                  <FaSignOutAlt/>
-              </span>
-              <span className='title'>Sign Out</span>
-            </Link>
-          </li>
+          ))}
+         
         </ul>
         <div onClick={()=>setToggle(!toggle)} className={classNames([`toggle`,toggle ?'active':''])}></div>
       </div>

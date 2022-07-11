@@ -81,6 +81,10 @@
 .navigation ul li:hover{
   background: #fff;
 }
+.navigation ul li.active{
+  background: #fff;
+  color:#365fa1
+}
 .navigation ul li:nth-child(1){
  top:20px;
  margin-bottom: 40px;
@@ -113,6 +117,33 @@
   box-shadow: 7.5px -7.5px 0 7.5px #fff
 
 }
+/* po active  rogi przycisków  */
+.navigation ul li:not(:first-child).active::before
+{
+  content: '';
+  position: absolute;
+  top:-20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-bottom-right-radius:20px;
+  box-shadow: 7.5px 7.5px 0 7.5px #fff
+
+}
+.navigation ul li:not(:first-child).active::after
+{
+  content: '';
+  position: absolute;
+  bottom:-20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-top-right-radius:20px;
+  box-shadow: 7.5px -7.5px 0 7.5px #fff
+
+}
 
 .navigation ul li a{
   position: relative;
@@ -127,6 +158,10 @@
 color:#365fa1
 
 }
+.navigation ul li.active:not(:first-child) a{
+  color:#365fa1
+  
+  }
 .navigation ul li a .icon{
   position:relative;
   display:block;
